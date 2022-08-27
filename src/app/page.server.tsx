@@ -1,4 +1,5 @@
-import Board, { generateBoard } from './board.client'
+import Board from './Board.client'
+import { generateBoard } from './board'
 
 export default function Page({ initialBoard }) {
   return <Board initialBoard={initialBoard} />

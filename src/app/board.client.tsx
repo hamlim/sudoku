@@ -1,11 +1,7 @@
 import { useState } from 'react'
 
-let initialBoard = [[], [], [], [], [], [], [], [], []]
-
-export default function Board() {
+export default function Board({ initialBoard }) {
   let [board, setBoard] = useState(initialBoard)
 
-  return <div>Board here!</div>
+  return <pre>{JSON.stringify(board, null, 2)}</pre>
 }
-
-export function generateBoard() {}
