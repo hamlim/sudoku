@@ -1,0 +1,36 @@
+{
+  "name": "template-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7",
+    "@ds-pack/components": "*",
+    "@ds-pack/use-refs": "^1",
+    "@vanilla-extract/babel-plugin": "*",
+    "@vanilla-extract/css": "*",
+    "@vanilla-extract/dynamic": "*",
+    "@vanilla-extract/next-plugin": "*",
+    "nanopop": "^2",
+    "next": "12.2.3-canary.10",
+    "next-transpile-modules": "^9.0.0",
+    "polished": "^4.2.2",
+    "rainbow-sprinkles": "^0.12",
+    "react": "experimental",
+    "react-dom": "experimental"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@babel/plugin-proposal-export-default-from": "^7",
+    "@types/node": "^14",
+    "@types/react": "^18",
+    "babel-plugin-transform-imports": "2.0.0",
+    "typescript": "^4",
+    "webpack": "^5"
+  },
+  "packageManager": "yarn@3.2.1"
+}
