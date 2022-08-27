@@ -7,7 +7,7 @@ let withTM = createTM(['@ds-pack/components'])
 let config = {
   reactStrictMode: true,
   experimental: {
-    // appDir: true
+    appDir: true,
     runtime: 'nodejs',
     serverComponents: true,
   },
