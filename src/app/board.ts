@@ -201,6 +201,8 @@ function getBox(box: BoxLocation, cells: Cells) {
   }
 }
 
-// printBox(getBox('top-left', cells))
+let cells = getInitialCells()
 
-// mapCells(cells)
+debugBox(getBox('top-left', cells))
+
+debugCells(cells)
