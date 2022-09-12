@@ -201,8 +201,8 @@ function getBox(box: BoxLocation, cells: Cells) {
   }
 }
 
-let cells = getInitialCells()
+// let cells = getInitialCells()
 
-debugBox(getBox('top-left', cells))
+// debugBox(getBox('top-left', cells))
 
-debugCells(cells)
+// debugCells(cells)

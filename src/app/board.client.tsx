@@ -1,3 +1,5 @@
+'client-entry'
+
 import { useState } from 'react'
 
 export default function Board({ initialBoard }) {

@@ -1,3 +1,5 @@
+import './styles.client'
+
 export default function Layout({ children }) {
   return (
     <html>
