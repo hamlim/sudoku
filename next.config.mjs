@@ -9,16 +9,17 @@ let config = {
   experimental: {
     appDir: true,
     runtime: 'nodejs',
-    serverComponents: true,
+    // serverComponents: true,
   },
   webpack(config) {
-    if (config?.module?.rules?.[2]?.oneOf?.[7]?.include?.or) {
-      config.module.rules[2].oneOf[7].include.or =
-        config.module.rules[2].oneOf[7].include.or.filter(Boolean)
+    // configuration[0].module.rules[2].oneOf[8].include.or[1]
+    if (config?.module?.rules?.[2]?.oneOf?.[8]?.include?.or) {
+      config.module.rules[2].oneOf[8].include.or =
+        config.module.rules[2].oneOf[8].include.or.filter(Boolean)
     }
-    if (config?.module?.rules?.[2]?.oneOf?.[7]?.issuer?.or) {
-      config.module.rules[2].oneOf[7].issuer.or =
-        config.module.rules[2].oneOf[7].issuer.or.filter(Boolean)
+    if (config?.module?.rules?.[2]?.oneOf?.[8]?.issuer?.or) {
+      config.module.rules[2].oneOf[8].issuer.or =
+        config.module.rules[2].oneOf[8].issuer.or.filter(Boolean)
     }
     return config
   },

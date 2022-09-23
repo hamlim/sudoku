@@ -1,3 +1,3 @@
-'client-entry'
+'client'
 
 import './global.css'

@@ -1,4 +1,4 @@
-'client-entry'
+'client'
 
 import { useState } from 'react'
 

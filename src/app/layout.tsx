@@ -1,4 +1,5 @@
-import './styles.client'
+'client'
+import './styles'
 
 export default function Layout({ children }) {
   return (
