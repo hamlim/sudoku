@@ -24,4 +24,7 @@ let config = {
     return config
   },
 }
+
+// export default config;
+
 export default withTM(withVanillaExtract(config))

@@ -1,9 +1,10 @@
 'client'
-import './styles'
+import './styles.client'
+import { themeClass } from '@ds-pack/components'
 
 export default function Layout({ children }) {
   return (
-    <html>
+    <html className={themeClass}>
       <head>
         <title>Sudoku</title>
       </head>

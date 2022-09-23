@@ -1,6 +1,5 @@
-
 import { experimental_use as use } from 'react'
-import Board from './Board'
+import Board from './Board.client'
 import { getInitialCells } from './board-utils'
 
 export default function Page() {
