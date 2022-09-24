@@ -223,6 +223,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-syntax-typescript@npm:^7.18.6":
+  version: 7.18.6
+  resolution: "@babel/plugin-syntax-typescript@npm:7.18.6"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.18.6
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 2cde73725ec51118ebf410bf02d78781c03fa4d3185993fcc9d253b97443381b621c44810084c5dd68b92eb8bdfae0e5b163e91b32bebbb33852383d1815c05d
+  languageName: node
+  linkType: hard
+
 "@babel/runtime@npm:^7, @babel/runtime@npm:^7.12.5, @babel/runtime@npm:^7.17.8":
   version: 7.18.9
   resolution: "@babel/runtime@npm:7.18.9"
@@ -232,7 +243,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/template@npm:^7.12.13, @babel/template@npm:^7.18.6":
+"@babel/template@npm:^7.18.6":
   version: 7.18.6
   resolution: "@babel/template@npm:7.18.6"
   dependencies:
@@ -551,18 +562,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanilla-extract/babel-plugin@npm:*":
-  version: 1.1.7
-  resolution: "@vanilla-extract/babel-plugin@npm:1.1.7"
+"@vanilla-extract/babel-plugin-debug-ids@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@vanilla-extract/babel-plugin-debug-ids@npm:1.0.0"
   dependencies:
     "@babel/core": ^7.13.10
-    "@babel/template": ^7.12.13
-    "@vanilla-extract/integration": ^5.0.0
-  checksum: 0fd00a1190c9413320d82ef797ef3149ba89e64eaa18d0d09d0235c025d6ab41b453718654e390c84aca322b883d663e3300d672bae9d74157838f73244ba94b
+  checksum: cb5d3496634bdeca8f48470ee0803ca5a1d63642af7be93a2a28e9c71bc38c6024e6f970bbaafb7fdf508351a3c83eb65a9e8bfa9262af4f04a8da6c58222b29
   languageName: node
   linkType: hard
 
-"@vanilla-extract/css@npm:*, @vanilla-extract/css@npm:^1.7.2":
+"@vanilla-extract/css@npm:^1.7.2":
   version: 1.7.2
   resolution: "@vanilla-extract/css@npm:1.7.2"
   dependencies:
@@ -581,7 +590,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanilla-extract/dynamic@npm:*":
+"@vanilla-extract/css@npm:^1.9.1":
+  version: 1.9.1
+  resolution: "@vanilla-extract/css@npm:1.9.1"
+  dependencies:
+    "@emotion/hash": ^0.8.0
+    "@vanilla-extract/private": ^1.0.3
+    ahocorasick: 1.0.2
+    chalk: ^4.1.1
+    css-what: ^5.0.1
+    cssesc: ^3.0.0
+    csstype: ^3.0.7
+    deep-object-diff: ^1.1.0
+    deepmerge: ^4.2.2
+    media-query-parser: ^2.0.2
+    outdent: ^0.8.0
+  checksum: 91127d8e2eaaf521b155a39fb6a93e0fbfe5ddd5a8bdf1c732aba278cfdb9505cba24c755a982bc47682b9ff582a06d11e51e6f8d810404164ba098799ce6800
+  languageName: node
+  linkType: hard
+
+"@vanilla-extract/dynamic@npm:^2.0.2":
   version: 2.0.2
   resolution: "@vanilla-extract/dynamic@npm:2.0.2"
   dependencies:
@@ -590,10 +618,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanilla-extract/integration@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@vanilla-extract/integration@npm:5.0.0"
+"@vanilla-extract/integration@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@vanilla-extract/integration@npm:6.0.0"
   dependencies:
+    "@babel/core": ^7.13.10
+    "@babel/plugin-syntax-typescript": ^7.18.6
+    "@vanilla-extract/babel-plugin-debug-ids": ^1.0.0
     "@vanilla-extract/css": ^1.7.2
     esbuild: ^0.11.16
     eval: 0.1.6
@@ -601,19 +632,19 @@ __metadata:
     javascript-stringify: ^2.0.1
     lodash: ^4.17.21
     outdent: ^0.8.0
-  checksum: fc8d6ea3a36be1520b66f8bb4e060bc3d4d40256a8c0f8a8e8153b1ee346adba7ab3e9772ca2901c3f80531786468de377ef02a1d4dc7edc56b0c0a6a85fd373
+  checksum: b1ad1ddc60e4edee0996c1e5d8c458c045dff3f3af8a6b0debb695e5505d4c8c9bbd0027e2de0299d41596c45495d8a3b549becd45163b7b3ec908fd6454370d
   languageName: node
   linkType: hard
 
-"@vanilla-extract/next-plugin@npm:*":
-  version: 2.0.2
-  resolution: "@vanilla-extract/next-plugin@npm:2.0.2"
+"@vanilla-extract/next-plugin@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "@vanilla-extract/next-plugin@npm:2.1.0"
   dependencies:
-    "@vanilla-extract/webpack-plugin": ^2.1.7
+    "@vanilla-extract/webpack-plugin": ^2.2.0
     browserslist: ^4.19.1
   peerDependencies:
     next: ">=12.0.5"
-  checksum: dcd09681d14750b4e8f269bd5a42f729cd05a22395c69d1b916309ed9a9b9ce304704ddd95e476959c5d601d5baa6053f7374d6dc9afa07b29513ddde715bbe9
+  checksum: 2a49f9689c12b78eb5844b7cf7cd97734fd002dc9f7ebaea079a980883fcec159cad857e10f722eb931c8f8c7055deba8c528c63ddf2f66c2cb9409005c06252
   languageName: node
   linkType: hard
 
@@ -624,17 +655,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vanilla-extract/webpack-plugin@npm:^2.1.7":
-  version: 2.1.11
-  resolution: "@vanilla-extract/webpack-plugin@npm:2.1.11"
+"@vanilla-extract/webpack-plugin@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "@vanilla-extract/webpack-plugin@npm:2.2.0"
   dependencies:
-    "@vanilla-extract/integration": ^5.0.0
+    "@vanilla-extract/integration": ^6.0.0
     chalk: ^4.1.1
     debug: ^4.3.1
     loader-utils: ^2.0.0
   peerDependencies:
     webpack: ^4.30.0 || ^5.20.2
-  checksum: 7104ef7a8809442bb586be417021c52d9c02cfa3c7b6aa182f95d9c6cab2da1c4b9aa2f4500f75e2c465715f989c0795acd2ccad56ec3b0936cf86617b9a69ef
+  checksum: 3e1741062eb849192558718e85c99d2e1aeefab01f17863d2381d493ec337a1a5137b8aef7bb60687ad754facda184d15ba763231f7bdad307170761755abf67
   languageName: node
   linkType: hard
 
@@ -821,6 +852,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ahocorasick@npm:1.0.2":
+  version: 1.0.2
+  resolution: "ahocorasick@npm:1.0.2"
+  checksum: a13ce4403554ae782cf5e28d468a732acf1fd3d0bff251f5dcfddfa5497b6cc343948d69cd94dfdbe8d4dfdb81e2b34cb1c92079e6301f38b0143d314fb95bd6
+  languageName: node
+  linkType: hard
+
 "ajv-keywords@npm:^3.5.2":
   version: 3.5.2
   resolution: "ajv-keywords@npm:3.5.2"
@@ -877,7 +915,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.14.5, browserslist@npm:^4.19.1, browserslist@npm:^4.20.2":
+"browserslist@npm:^4.14.5, browserslist@npm:^4.20.2":
   version: 4.21.2
   resolution: "browserslist@npm:4.21.2"
   dependencies:
@@ -888,6 +926,20 @@ __metadata:
   bin:
     browserslist: cli.js
   checksum: 30fe59f8b065f99665ea63819d29c797660f7975857c290f61f570403abed4d7039ca15b6fd21e39a57b87e1a9262f94676114040766fc0da6ccc11faf9fc377
+  languageName: node
+  linkType: hard
+
+"browserslist@npm:^4.19.1":
+  version: 4.21.4
+  resolution: "browserslist@npm:4.21.4"
+  dependencies:
+    caniuse-lite: ^1.0.30001400
+    electron-to-chromium: ^1.4.251
+    node-releases: ^2.0.6
+    update-browserslist-db: ^1.0.9
+  bin:
+    browserslist: cli.js
+  checksum: 4af3793704dbb4615bcd29059ab472344dc7961c8680aa6c4bb84f05340e14038d06a5aead58724eae69455b8fade8b8c69f1638016e87e5578969d74c078b79
   languageName: node
   linkType: hard
 
@@ -905,7 +957,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.30001406":
+"caniuse-lite@npm:^1.0.30001400, caniuse-lite@npm:^1.0.30001406":
   version: 1.0.30001410
   resolution: "caniuse-lite@npm:1.0.30001410"
   checksum: 0b1479dc13a736d244afe0f941bdd4d1ce26a73023f017b653f101d6e9398dee527b60bc6abfcd002e873240923cc766687ed9739dc233c47bcbf2a7673c3864
@@ -1041,6 +1093,13 @@ __metadata:
   version: 1.4.192
   resolution: "electron-to-chromium@npm:1.4.192"
   checksum: b4c59ecdfa3c19a3d350a28129bc4162a9707378f69dbf00ea87d138e86696196e4ffcb1b23ba979368117f83333ed1bb26524749994134a06ec6ac9b9800847
+  languageName: node
+  linkType: hard
+
+"electron-to-chromium@npm:^1.4.251":
+  version: 1.4.261
+  resolution: "electron-to-chromium@npm:1.4.261"
+  checksum: 5a51462743037d0afccc10efafbe83c9bd1409e6266a3857c6a7d24b68fcb06d2cd283467bca7bf8f876d14cd13a2adca69ce179ddd3b3d8cd0d3804cf0762f1
   languageName: node
   linkType: hard
 
@@ -1752,10 +1811,9 @@ __metadata:
     "@ds-pack/use-refs": ^1
     "@types/node": ^14
     "@types/react": ^18
-    "@vanilla-extract/babel-plugin": "*"
-    "@vanilla-extract/css": "*"
-    "@vanilla-extract/dynamic": "*"
-    "@vanilla-extract/next-plugin": "*"
+    "@vanilla-extract/css": ^1.9.1
+    "@vanilla-extract/dynamic": ^2.0.2
+    "@vanilla-extract/next-plugin": ^2.1.0
     babel-plugin-transform-imports: 2.0.0
     nanopop: ^2
     next: 12.3.2-canary.3
@@ -1850,6 +1908,20 @@ __metadata:
   bin:
     browserslist-lint: cli.js
   checksum: 7c7da28d0fc733b17e01c8fa9385ab909eadce64b8ea644e9603867dc368c2e2a6611af8247e72612b23f9e7cb87ac7c7585a05ff94e1759e9d646cbe9bf49a7
+  languageName: node
+  linkType: hard
+
+"update-browserslist-db@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "update-browserslist-db@npm:1.0.9"
+  dependencies:
+    escalade: ^3.1.1
+    picocolors: ^1.0.0
+  peerDependencies:
+    browserslist: ">= 4.21.0"
+  bin:
+    browserslist-lint: cli.js
+  checksum: f625899b236f6a4d7f62b56be1b8da230c5563d1fef84d3ef148f2e1a3f11a5a4b3be4fd7e3703e51274c116194017775b10afb4de09eb2c0d09d36b90f1f578
   languageName: node
   linkType: hard
 

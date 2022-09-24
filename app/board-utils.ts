@@ -34,13 +34,110 @@ function getRandInt(): Value {
   return val === 0 ? (1 as Value) : (val as Value)
 }
 
+// |-------|-------|-------|
+// | 1 2 3 | 4 5 6 | 7 8 9 |
+// | 4 5 6 | 7 8 9 | 1 2 3 |
+// | 7 8 9 | 1 2 3 | 4 5 6 |
+// |-------|-------|-------|
+// | 2 3 4 | 5 6 7 | 8 9 1 |
+// | 5 6 7 | 8 9 1 | 2 3 4 |
+// | 8 9 1 | 2 3 4 | 5 6 7 |
+// |-------|-------|-------|
+// | 3 4 5 | 6 7 8 | 9 1 2 |
+// | 6 7 8 | 9 1 2 | 3 4 5 |
+// | 9 1 2 | 3 4 5 | 6 7 8 |
+// |-------|-------|-------|
+export let seedBoard = [
+  { value: 1, rowIndex: 1, colIndex: 1},
+  { value: 2, rowIndex: 1, colIndex: 2},
+  { value: 3, rowIndex: 1, colIndex: 3},
+  { value: 4, rowIndex: 1, colIndex: 4},
+  { value: 5, rowIndex: 1, colIndex: 5},
+  { value: 6, rowIndex: 1, colIndex: 6},
+  { value: 7, rowIndex: 1, colIndex: 7},
+  { value: 8, rowIndex: 1, colIndex: 8},
+  { value: 9, rowIndex: 1, colIndex: 9},
+  { value: 4, rowIndex: 2, colIndex: 1},
+  { value: 5, rowIndex: 2, colIndex: 2},
+  { value: 6, rowIndex: 2, colIndex: 3},
+  { value: 7, rowIndex: 2, colIndex: 4},
+  { value: 8, rowIndex: 2, colIndex: 5},
+  { value: 9, rowIndex: 2, colIndex: 6},
+  { value: 1, rowIndex: 2, colIndex: 7},
+  { value: 2, rowIndex: 2, colIndex: 8},
+  { value: 3, rowIndex: 2, colIndex: 9},
+  { value: 7, rowIndex: 3, colIndex: 1},
+  { value: 8, rowIndex: 3, colIndex: 2},
+  { value: 9, rowIndex: 3, colIndex: 3},
+  { value: 1, rowIndex: 3, colIndex: 4},
+  { value: 2, rowIndex: 3, colIndex: 5},
+  { value: 3, rowIndex: 3, colIndex: 6},
+  { value: 4, rowIndex: 3, colIndex: 7},
+  { value: 5, rowIndex: 3, colIndex: 8},
+  { value: 6, rowIndex: 3, colIndex: 9},
+  { value: 2, rowIndex: 4, colIndex: 1},
+  { value: 3, rowIndex: 4, colIndex: 2},
+  { value: 4, rowIndex: 4, colIndex: 3},
+  { value: 5, rowIndex: 4, colIndex: 4},
+  { value: 6, rowIndex: 4, colIndex: 5},
+  { value: 7, rowIndex: 4, colIndex: 6},
+  { value: 8, rowIndex: 4, colIndex: 7},
+  { value: 9, rowIndex: 4, colIndex: 8},
+  { value: 1, rowIndex: 4, colIndex: 9},
+  { value: 5, rowIndex: 5, colIndex: 1},
+  { value: 6, rowIndex: 5, colIndex: 2},
+  { value: 7, rowIndex: 5, colIndex: 3},
+  { value: 8, rowIndex: 5, colIndex: 4},
+  { value: 9, rowIndex: 5, colIndex: 5},
+  { value: 1, rowIndex: 5, colIndex: 6},
+  { value: 2, rowIndex: 5, colIndex: 7},
+  { value: 3, rowIndex: 5, colIndex: 8},
+  { value: 4, rowIndex: 5, colIndex: 9},
+  { value: 8, rowIndex: 6, colIndex: 1},
+  { value: 9, rowIndex: 6, colIndex: 2},
+  { value: 1, rowIndex: 6, colIndex: 3},
+  { value: 2, rowIndex: 6, colIndex: 4},
+  { value: 3, rowIndex: 6, colIndex: 5},
+  { value: 4, rowIndex: 6, colIndex: 6},
+  { value: 5, rowIndex: 6, colIndex: 7},
+  { value: 6, rowIndex: 6, colIndex: 8},
+  { value: 7, rowIndex: 6, colIndex: 9},
+  { value: 3, rowIndex: 7, colIndex: 1},
+  { value: 4, rowIndex: 7, colIndex: 2},
+  { value: 5, rowIndex: 7, colIndex: 3},
+  { value: 6, rowIndex: 7, colIndex: 4},
+  { value: 7, rowIndex: 7, colIndex: 5},
+  { value: 8, rowIndex: 7, colIndex: 6},
+  { value: 9, rowIndex: 7, colIndex: 7},
+  { value: 1, rowIndex: 7, colIndex: 8},
+  { value: 2, rowIndex: 7, colIndex: 9},
+  { value: 6, rowIndex: 8, colIndex: 1},
+  { value: 7, rowIndex: 8, colIndex: 2},
+  { value: 8, rowIndex: 8, colIndex: 3},
+  { value: 9, rowIndex: 8, colIndex: 4},
+  { value: 1, rowIndex: 8, colIndex: 5},
+  { value: 2, rowIndex: 8, colIndex: 6},
+  { value: 3, rowIndex: 8, colIndex: 7},
+  { value: 4, rowIndex: 8, colIndex: 8},
+  { value: 5, rowIndex: 8, colIndex: 9},
+  { value: 9, rowIndex: 9, colIndex: 1},
+  { value: 1, rowIndex: 9, colIndex: 2},
+  { value: 2, rowIndex: 9, colIndex: 3},
+  { value: 3, rowIndex: 9, colIndex: 4},
+  { value: 4, rowIndex: 9, colIndex: 5},
+  { value: 5, rowIndex: 9, colIndex: 6},
+  { value: 6, rowIndex: 9, colIndex: 7},
+  { value: 7, rowIndex: 9, colIndex: 8},
+  { value: 8, rowIndex: 9, colIndex: 9},
+]
+
 export function getInitialCells() {
   let cells = []
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       // cells.push(new Cell(undefined, i, j))
       cells.push({
-        value: undefined,
+        value: 0,
         rowIndex: i,
         colIndex: j
       })
