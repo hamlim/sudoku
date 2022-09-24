@@ -4,7 +4,7 @@ import { getInitialCells } from './board-utils'
 
 export default function Page() {
   let {initialBoard} = use(getProps())
-  console.log(initialBoard)
+  // console.log(initialBoard)
   return <Board initialBoard={initialBoard} />
 }
 

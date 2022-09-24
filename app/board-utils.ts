@@ -38,7 +38,12 @@ export function getInitialCells() {
   let cells = []
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      cells.push(new Cell(undefined, i, j))
+      // cells.push(new Cell(undefined, i, j))
+      cells.push({
+        value: undefined,
+        rowIndex: i,
+        colIndex: j
+      })
     }
   }
   return cells

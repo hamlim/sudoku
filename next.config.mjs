@@ -9,7 +9,12 @@ let config = {
   experimental: {
     appDir: true,
     runtime: 'nodejs',
-    // serverComponents: true,
+    modularizeImports: {
+      '@ds-pack/components': {
+        transform: '@ds-pack/components/src/{{member}}',
+        skipDefaultConversion: true
+      }
+    }
   },
   webpack(config) {
     // configuration[0].module.rules[2].oneOf[8].include.or[1]

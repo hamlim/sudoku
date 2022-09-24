@@ -1,6 +1,5 @@
-'client'
 import './styles.client'
-import { themeClass } from '@ds-pack/components'
+import { themeClass } from '@ds-pack/components/src/vars.css'
 
 export default function Layout({ children }) {
   return (
