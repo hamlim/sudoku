@@ -7,12 +7,12 @@ let withTM = createTM(['@ds-pack/components'])
 let config = {
   reactStrictMode: true,
   experimental: {
-    appDir: true,
+    // appDir: true,
     runtime: 'nodejs',
     modularizeImports: {
       '@ds-pack/components': {
-        // transform: '@ds-pack/components/src/{{member}}',
-        transform: '@ds-pack/components/compiled',
+        transform: '@ds-pack/components/src/{{member}}',
+        // transform: '@ds-pack/components/compiled',
         skipDefaultConversion: true,
       },
     },
@@ -33,5 +33,5 @@ let config = {
 
 // export default config;
 
-// export default withTM(withVanillaExtract(config))
-export default withVanillaExtract(config)
+export default withTM(withVanillaExtract(config))
+// export default withVanillaExtract(config)

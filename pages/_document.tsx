@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from 'next/document'
-import { themeClass } from '@ds-pack/components/compiled'
+import { themeClass } from '@ds-pack/components/src/vars.css'
 
 export default function Document() {
   return (

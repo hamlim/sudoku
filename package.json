@@ -1,5 +1,5 @@
 {
-  "name": "template-next-app",
+  "name": "sudoku",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,12 +15,12 @@
     "@vanilla-extract/dynamic": "^2.0.2",
     "@vanilla-extract/next-plugin": "^2.1.0",
     "nanopop": "^2",
-    "next": "12.3.2-canary.3",
+    "next": "12.3.0",
     "next-transpile-modules": "^9.0.0",
     "polished": "^4.2.2",
     "rainbow-sprinkles": "^0.12",
-    "react": "0.0.0-experimental-3d615fc14-20220919",
-    "react-dom": "0.0.0-experimental-3d615fc14-20220919"
+    "react": "experimental",
+    "react-dom": "experimental"
   },
   "devDependencies": {
     "@babel/core": "^7.18.0",

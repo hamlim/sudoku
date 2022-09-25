@@ -1,6 +1,6 @@
 // import {Box} from '@ds-pack/components'
-import { getInitialCells, seedBoard } from '../app/board-utils'
-import Board from '../app/Board.client'
+import { getInitialCells, seedBoard } from '../lib/board-utils'
+import Board from '../components/Board.client'
 
 export default function Index({ initialBoard }) {
   // console.log({initialBoard})
