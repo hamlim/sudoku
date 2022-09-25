@@ -9,13 +9,13 @@ let config = {
   experimental: {
     // appDir: true,
     runtime: 'nodejs',
-    modularizeImports: {
-      '@ds-pack/components': {
-        transform: '@ds-pack/components/src/{{member}}',
-        // transform: '@ds-pack/components/compiled',
-        skipDefaultConversion: true,
-      },
-    },
+    // modularizeImports: {
+    //   '@ds-pack/components': {
+    //     transform: '@ds-pack/components/src/{{member}}',
+    //     // transform: '@ds-pack/components/compiled',
+    //     skipDefaultConversion: true,
+    //   },
+    // },
   },
   // webpack(config) {
   //   // configuration[0].module.rules[2].oneOf[8].include.or[1]
