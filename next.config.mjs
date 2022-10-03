@@ -1,13 +1,13 @@
-import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
-import createTM from 'next-transpile-modules'
-let withVanillaExtract = createVanillaExtractPlugin()
-let withTM = createTM(['@ds-pack/components'])
+// import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+// import createTM from 'next-transpile-modules'
+// let withVanillaExtract = createVanillaExtractPlugin()
+// let withTM = createTM(['@ds-pack/components'])
 
 /** @type {import('next').NextConfig} */
 let config = {
   reactStrictMode: true,
   experimental: {
-    // appDir: true,
+    appDir: true,
     runtime: 'nodejs',
     // modularizeImports: {
     //   '@ds-pack/components': {
@@ -33,5 +33,5 @@ let config = {
 
 // export default config;
 
-export default withTM(withVanillaExtract(config))
+export default /* withTM(withVanillaExtract(*/ config /*))*/
 // export default withVanillaExtract(config)

@@ -1,6 +1,8 @@
-// 'client'
-import './styles/styles.client'
+'client'
 import { themeClass } from '@ds-pack/components'
+import '@ds-pack/components/dist/index.css'
+
+// let themeClass = 'foo'
 
 export default function Layout({ children }) {
   return (
