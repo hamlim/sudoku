@@ -1,0 +1,35 @@
+.Board_cell__1w17mxx0 {
+  height: 60px;
+  width: 60px;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.Board_isActive__1w17mxx1 {
+  border: solid 5px;
+  border-color: var(--colors-blue400__1ngcs9h1k);
+}
+.Board_board__1w17mxx2 {
+  border: solid 2px var(--colors-black__1ngcs9h15);
+  max-width: 540px;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  margin: 0 auto;
+}
+.Board_cellPencilMarks__1w17mxx3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: "num num num"
+    "num num num"
+    "num num num";
+}
+.Board_pencilMark__1w17mxx4 {
+  grid-area: num;
+}
