@@ -1,0 +1,11 @@
+{
+  "name": "sudoku",
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "2.2.2",
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
