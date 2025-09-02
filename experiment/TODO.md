@@ -1,0 +1,12 @@
+- [ ] Actually load other games
+- [ ] Keep track of streaks
+  - Num of puzzels completed
+  - Num of actie days
+- [ ] Limit number of puzzels one can do to 3 a day
+  - Add higher limit for a paid plan to 10 a day
+- [ ] Add support for hints
+- [ ] Add support for hitting a number when no cell is active to highlight all those cells
+- [ ] Add unit tests to reducer logic
+- [ ] Add E2E tests for app
+- [ ] Remove need for tailwind since it doesn't seem to work with builds
+- [ ] Figure out how to build app
