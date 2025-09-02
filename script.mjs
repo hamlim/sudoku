@@ -1,0 +1,280 @@
+// @TODO add caching
+async function loadPuzzels(chunkNum) {
+  let res = await fetch(`/data/chunk_${chunkNum}.csv`);
+  let text = await res.text();
+  let rows = text.split("\n");
+  let puzzels = rows.map((row) =>
+    row.split(",").map((puzzelOrSolution) => puzzelOrSolution.split("")),
+  );
+  return puzzels;
+}
+
+let puzzelCollection = await loadPuzzels("001");
+
+/**
+ * @param {Array<string>} puzzel
+ *
+ **/
+
+let listeners = new Map();
+
+// map of index: meta
+// meta is: { writable: boolean, value: string, valid: boolean, solution: string, cellNotes: Array<string>, blockNotes: Array<string>, element: HTMLElement, history: Array<{cellNotes, blockNotes, value}> }
+let grid = new Map();
+
+function drawGrid([puzzel, solution]) {
+  let gridEl = document.querySelector(".board");
+  cleanupListeners();
+  gridEl.innerHTML = "";
+
+  for (let cellIndex = 0; cellIndex < puzzel.length; cellIndex++) {
+    let cell = puzzel[cellIndex];
+
+    let cellMeta = {
+      history: [],
+    };
+    if (cell === "0") {
+      cellMeta.writable = true;
+      cellMeta.value = "";
+      cellMeta.valid = false;
+      cellMeta.solution = solution[cellIndex];
+      cellMeta.cellNotes = [];
+      cellMeta.blockNotes = [];
+    } else {
+      cellMeta.writable = false;
+      cellMeta.value = cell;
+      cellMeta.valid = true;
+      cellMeta.solution = solution[cellIndex];
+      cellMeta.cellNotes = [];
+      cellMeta.blockNotes = [];
+    }
+
+    let cellElement = document.createElement("div");
+    cellElement.classList.add("cell");
+    cellElement.tabIndex = `1`;
+    cellElement.role = "button";
+    cellElement.ariaLabel = `Cell ${cellIndex}`;
+    cellElement.setAttribute("data-index", cellIndex);
+    if (cell !== "0") {
+      cellElement.setAttribute("data-writable", false);
+      cellElement.textContent = cell;
+    } else {
+      cellElement.setAttribute("data-writable", true);
+    }
+    gridEl.appendChild(cellElement);
+    cellMeta.element = cellElement;
+    grid.set(cellIndex, cellMeta);
+  }
+
+  attachListeners(puzzel);
+}
+
+// utils
+function isNumeric(key) {
+  return Number(key) === key;
+}
+// end utils
+
+let focusedCells = new Set();
+
+let mode = "edit";
+
+function attachListeners(_puzzel) {
+  function clickListener(event) {
+    if (event.target.classList.contains("cell")) {
+      event.preventDefault();
+      if (focusedCells.has(event.target)) {
+        focusedCells.delete(event.target);
+        event.target.classList.remove("focused");
+      } else {
+        if (focusedCells.size && !event.shiftKey) {
+          for (let cell of focusedCells) {
+            cell.classList.remove("focused");
+          }
+          focusedCells.clear();
+        }
+        focusedCells.add(event.target);
+        event.target.classList.add("focused");
+      }
+    }
+  }
+  document.addEventListener("click", clickListener);
+  listeners.set("click", clickListener);
+
+  function doubleClick(event) {
+    if (
+      event.target.classList.contains("cell") &&
+      event.target.textContent !== ""
+    ) {
+      if (focusedCells.size) {
+        for (let cell of focusedCells) {
+          cell.classList.remove("focused");
+        }
+        focusedCells.clear();
+      }
+      // focus all same value cells
+      for (let cellMeta of grid.values()) {
+        if (cellMeta.value === event.target.textContent) {
+          cellMeta.element.classList.add("focused");
+          focusedCells.add(cellMeta.element);
+        }
+      }
+    }
+  }
+  document.addEventListener("dblclick", doubleClick);
+  listeners.set("dblclick", doubleClick);
+
+  function keydownListener(event) {
+    switch (event.key) {
+      case "ArrowUp": {
+        // focus the cell above the current one (keep existing focus if shift key is held)
+        let currentCell = event.target;
+        let currentCellIndex = currentCell.getAttribute("data-index");
+        let newCellIndex = Number(currentCellIndex) - 9;
+        let newCell = grid.get(newCellIndex);
+        if (newCell) {
+          if (focusedCells.size && !event.shiftKey) {
+            for (let cell of focusedCells) {
+              cell.classList.remove("focused");
+            }
+            focusedCells.clear();
+          }
+          newCell.element.classList.add("focused");
+          focusedCells.add(newCell.element);
+          newCell.element.focus();
+          // clear focus on the current target
+          focusedCells.delete(currentCell);
+          currentCell.classList.remove("focused");
+          // currentCell.blur()
+        }
+        break;
+      }
+      case "ArrowDown": {
+        let currentCell = event.target;
+        let currentCellIndex = currentCell.getAttribute("data-index");
+        let newCellIndex = Number(currentCellIndex) + 9;
+        let newCell = grid.get(newCellIndex);
+        if (newCell) {
+          if (focusedCells.size && !event.shiftKey) {
+            for (let cell of focusedCells) {
+              cell.classList.remove("focused");
+            }
+            focusedCells.clear();
+          }
+          newCell.element.classList.add("focused");
+          focusedCells.add(newCell.element);
+          newCell.element.focus();
+          // clear focus on the current target
+          focusedCells.delete(currentCell);
+          currentCell.classList.remove("focused");
+          // currentCell.blur()
+        }
+        break;
+      }
+      case "ArrowLeft": {
+        let currentCell = event.target;
+        let currentCellIndex = currentCell.getAttribute("data-index");
+        let newCellIndex = Number(currentCellIndex) - 1;
+        let newCell = grid.get(newCellIndex);
+        if (newCell) {
+          if (focusedCells.size && !event.shiftKey) {
+            for (let cell of focusedCells) {
+              cell.classList.remove("focused");
+            }
+            focusedCells.clear();
+          }
+          newCell.element.classList.add("focused");
+          focusedCells.add(newCell.element);
+          newCell.element.focus();
+          // clear focus on the current target
+          focusedCells.delete(currentCell);
+          currentCell.classList.remove("focused");
+          // currentCell.blur()
+        }
+        break;
+      }
+      case "ArrowRight": {
+        let currentCell = event.target;
+        let currentCellIndex = currentCell.getAttribute("data-index");
+        let newCellIndex = Number(currentCellIndex) + 1;
+        let newCell = grid.get(newCellIndex);
+        if (newCell) {
+          if (focusedCells.size && !event.shiftKey) {
+            for (let cell of focusedCells) {
+              cell.classList.remove("focused");
+            }
+            focusedCells.clear();
+          }
+          newCell.element.classList.add("focused");
+          focusedCells.add(newCell.element);
+          newCell.element.focus();
+          // clear focus on the current target
+          focusedCells.delete(currentCell);
+          currentCell.classList.remove("focused");
+          // currentCell.blur()
+        }
+        break;
+      }
+      case "Delete":
+      case "Backspace": {
+        // if the cell is writable, clear it
+        let targetCell = grid.get(
+          Number(event.target.getAttribute("data-index")),
+        );
+        if (targetCell.writable) {
+          targetCell.value = "";
+          targetCell.element.textContent = "";
+          targetCell.valid = false;
+          targetCell.cellNotes = [];
+          targetCell.blockNotes = [];
+        }
+        break;
+      }
+      default: {
+        let key = event.key;
+        if (isNumeric(key) && focusedCells.size) {
+          for (let cell of focusedCells) {
+            let gridCell = grid.get(Number(cell.getAttribute("data-index")));
+            if (gridCell.writable) {
+              if (mode === "cell-notes") {
+              } else if (mode === "block-notes") {
+              } else {
+                // edit mode
+                gridCell.history.push({
+                  cellNotes: gridCell.cellNotes,
+                  blockNotes: gridCell.blockNotes,
+                  value: gridCell.value,
+                });
+                gridCell.value = key;
+                gridCell.element.textContent = key;
+                gridCell.valid = key === Number(gridCell.solution);
+                gridCell.cellNotes = [];
+                gridCell.blockNotes = [];
+              }
+            }
+          }
+
+          if (mode === "edit") {
+            console.log(grid);
+            if (Array.from(grid.values()).every((meta) => meta.valid)) {
+              prompt("You win!");
+            }
+          }
+        }
+      }
+    }
+  }
+  document.addEventListener("keydown", keydownListener);
+  listeners.set("keydown", keydownListener);
+}
+
+function cleanupListeners() {
+  if (listeners.size) {
+    for (let [key, value] of listeners) {
+      document.removeEventListener(key, value);
+    }
+    listeners.clear();
+  }
+}
+
+drawGrid(puzzelCollection[0]);
